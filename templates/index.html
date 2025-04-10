@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="logo">Cyber<span>Store</span></div>
+    <nav class="menu">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="https://wa.me/6285603295443" target="_blank">Kontak</a>
+        {% if 'admin' in session %}
+            <a href="{{ url_for('tambah_produk') }}">Tambah Produk</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+        {% endif %}
+    </nav>
+    <div class="menu-toggle">&#9776;</div>
+</header>
+
+<section class="hero">
+    <h1 class="glitch">Selamat Datang di Cyber Store</h1>
+    <a href="{{ url_for('produk') }}" class="btn">Lihat Produk</a>
+</section>
+
+<!-- Daftar Produk -->
+<section class="produk-container">
+    <h2>Produk Tersedia</h2>
+    <div class="produk-list">
+        {% for produk in produk_list %}
+        <div class="produk-item">
+            <img src="{{ produk.gambar }}" alt="{{ produk.nama }}">
+            <h3>{{ produk.nama }}</h3>
+            <p>{{ produk.deskripsi }}</p>
+            <p class="harga">Rp {{ "{:,.0f}".format(produk.harga | int) }}</p>
+            <a href="{{ url_for('beli', id=produk.id) }}" class="btn">Lihat Detail</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+    document.querySelector(".menu-toggle").addEventListener("click", function() {
+        document.querySelector(".menu").classList.toggle("active");
+    });
+</script>
+
+</body>
+</html>

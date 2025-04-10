@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Produk</title>
+    <style>
+        body {
+            font-family: "Courier New", monospace;
+            background-color: #0d0d0d;
+            color: #00ffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #00ffff;
+            text-shadow: 0px 0px 10px #00ffff;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .produk-card {
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00ffff;
+            box-shadow: 0px 0px 15px #00ffff;
+            border-radius: 10px;
+            width: 260px;
+            margin: 15px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .produk-card img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid #00ffff;
+        }
+
+        .produk-card h3 {
+            color: #00ffff;
+            text-shadow: 0px 0px 10px #00ffff;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .produk-card p {
+            font-size: 14px;
+            color: #c0c0c0;
+            margin: 10px 0;
+        }
+
+        .harga {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0px 0px 10px #00ffff;
+            margin: 10px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 7px 12px;
+            margin: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .edit-btn {
+            background: #008b8b;
+            color: white;
+            box-shadow: 0px 0px 10px #00ffff;
+        }
+
+        .edit-btn:hover {
+            background: #006666;
+            box-shadow: 0px 0px 15px #00ffff;
+        }
+
+        .hapus-btn {
+            background: red;
+            color: white;
+            box-shadow: 0px 0px 10px red;
+        }
+
+        .hapus-btn:hover {
+            background: darkred;
+            box-shadow: 0px 0px 15px red;
+        }
+
+        .tambah-btn {
+            background: #00ffff;
+            color: #0d0d0d;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0px 0px 10px #00ffff;
+            display: inline-block;
+            margin: 20px;
+            text-decoration: none;
+        }
+
+        .tambah-btn:hover {
+            background: #008b8b;
+            box-shadow: 0px 0px 15px #00ffff;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-shadow: 0px 0px 10px #00ffff;
+        }
+    </style>
+</head>
+<body>
+    <h2>Daftar Produk</h2>
+
+    {% if 'admin' in session %}
+    <a href="{{ url_for('tambah_produk') }}" class="tambah-btn">+ Tambah Produk</a>
+    {% endif %}
+
+    <div class="container">
+        {% for produk in produk_list %}
+        <div class="produk-card">
+            <img src="{{ convert_img_url(produk.gambar) }}" alt="Gambar Produk">
+            <h3>{{ produk.nama }}</h3>
+            <p>{{ produk.deskripsi }}</p>
+            <p class="harga">Rp {{ "{:,.0f}".format(produk.harga | int) }}</p>
+            {% if session.get('admin') %}
+                <a href="{{ url_for('edit_produk', id=produk.id) }}" class="btn edit-btn">Edit</a>
+                <a href="{{ url_for('hapus_produk', id=produk.id) }}" class="btn hapus-btn" onclick="return confirm('Yakin mau hapus?');">Hapus</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ url_for('home') }}" class="back-link">Kembali ke Beranda</a>
+</body>
+</html>

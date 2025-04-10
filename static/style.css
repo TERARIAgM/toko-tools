@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #0a0a0a;
+    color: #0ff;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 2px solid #0ff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff;
+}
+
+.logo span {
+    color: #f0f;
+    text-shadow: 0 0 10px #f0f;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #0ff;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #f0f;
+    text-shadow: 0 0 10px #f0f;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #0ff;
+}
+
+/* Burger Menu di HP */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
+        border: 1px solid #0ff;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Biar hero section memenuhi layar */
+    text-align: center;
+    padding: 20px;
+    background: url('https://source.unsplash.com/1600x900/?cyber,blue,technology') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 36px;
+    position: relative;
+    color: #00e6ff;
+    text-shadow: 0 0 5px #00e6ff, 0 0 10px #00e6ff;
+}
+.hero h1 {
+    font-size: 32px; /* Sesuaikan ukuran */
+    position: relative;
+    color: #00e6ff; /* Biru Neon */
+    text-shadow: 0 0 5px #00e6ff, 0 0 10px #00e6ff, 0 0 20px #00e6ff;
+    animation: neonGlow 1.5s infinite alternate;
+}
+
+.hero .glitch {
+    font-size: 36px;
+    font-weight: bold;
+    position: relative;
+    color: #00e6ff;
+    text-shadow: 2px 2px 0 #00f, -2px -2px 0 #00e6ff;
+    animation: glitchEffect 0.8s infinite alternate;
+}
+
+/* Animasi Glow Biru */
+@keyframes neonGlow {
+    0% { text-shadow: 0 0 5px #00e6ff, 0 0 10px #00e6ff; }
+    100% { text-shadow: 0 0 10px #00e6ff, 0 0 20px #00e6ff; }
+}
+
+/* Animasi Glitch */
+@keyframes glitchEffect {
+    0% { transform: skewX(0deg); }
+    20% { transform: skewX(-5deg); }
+    40% { transform: skewX(5deg); }
+    60% { transform: skewX(-3deg); }
+    80% { transform: skewX(3deg); }
+    100% { transform: skewX(0deg); }
+}
+/* Animasi Glow */
+@keyframes neonGlow {
+    0% { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff; }
+    100% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
+}
+
+/* Animasi Glitch */
+@keyframes glitchEffect {
+    0% { transform: skewX(0deg); }
+    20% { transform: skewX(-5deg); }
+    40% { transform: skewX(5deg); }
+    60% { transform: skewX(-3deg); }
+    80% { transform: skewX(3deg); }
+    100% { transform: skewX(0deg); }
+}
+/* Efek Glitch */
+@keyframes glitch {
+    0% { text-shadow: 3px 3px 10px #0ff, -3px -3px 10px #f0f; transform: skewX(2deg); }
+    50% { text-shadow: -3px -3px 10px #0ff, 3px 3px 10px #f0f; transform: skewX(-2deg); }
+    100% { text-shadow: 3px 3px 10px #0ff, -3px -3px 10px #f0f; transform: skewX(2deg); }
+}
+
+/* Tombol Neon */
+.btn {
+    background: #0ff;
+    color: #000;
+    padding: 12px 25px;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 0 10px #0ff;
+}
+
+.btn:hover {
+    background: #f0f;
+    box-shadow: 0 0 20px #f0f;
+    transform: scale(1.1);
+}

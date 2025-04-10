@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Produk</title>
+    <style>
+        body {
+            font-family: "Courier New", monospace;
+            background-color: #0d0d0d;
+            color: #00ffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #00ffff;
+            text-shadow: 0px 0px 10px #00ffff;
+        }
+
+        form {                                                                                                                                                                               background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #00ffff;
+            box-shadow: 0px 0px 15px #00ffff;
+            border-radius: 10px;
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 10px 0 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #00ffff;
+            border-radius: 5px;
+            background: #0d0d0d;
+            color: #00ffff;
+            box-shadow: 0px 0px 10px #00ffff;
+            font-size: 14px;
+        }
+
+        button {
+            background: #00ffff;
+            color: #0d0d0d;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0px 0px 10px #00ffff;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #008b8b;
+            box-shadow: 0px 0px 15px #00ffff;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: bold;
+            text-shadow: 0px 0px 5px #00ffff;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h2>Tambah Produk</h2>
+
+<form action="{{ url_for('tambah_produk') }}" method="post">
+    <label for="nama">Nama Produk:</label>
+    <input type="text" name="nama" id="nama" placeholder="Masukkan Nama Produk" required>
+
+    <label for="deskripsi">Deskripsi:</label>
+    <textarea name="deskripsi" id="deskripsi" placeholder="Deskripsi Produk" required></textarea>
+
+    <label for="harga">Harga:</label>
+    <input type="number" name="harga" id="harga" placeholder="Harga Produk" required>
+
+    <label for="gambar">URL Gambar:</label>
+    <input type="text" name="gambar" id="gambar" placeholder="Masukkan URL Gambar" required>
+
+    <button type="submit">Tambah Produk</button>
+</form>
+
+
+<a href="{{ url_for('produk') }}" class="back-link">Kembali ke Daftar Produk</a>
+</body>
+</html>
