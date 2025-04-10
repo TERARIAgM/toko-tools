@@ -130,6 +130,23 @@
         .back-link:hover {
             text-shadow: 0px 0px 10px #00ffff;
         }
+
+        .beli-btn {
+            background-color: #00bfff;  /* Cyber blue */
+            color: #0d0d0d;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0px 0px 10px #00bfff;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            font-size: 16px;
+        }
+
+        .beli-btn:hover {
+            background-color: #008b8b;  /* Darker blue on hover */
+            box-shadow: 0px 0px 15px #00bfff;
+        }
     </style>
 </head>
 <body>
@@ -150,6 +167,7 @@
                 <a href="{{ url_for('edit_produk', id=produk.id) }}" class="btn edit-btn">Edit</a>
                 <a href="{{ url_for('hapus_produk', id=produk.id) }}" class="btn hapus-btn" onclick="return confirm('Yakin mau hapus?');">Hapus</a>
             {% endif %}
+            <a href="https://wa.me/6285603295443?text=Saya%20tertarik%20dengan%20produk%20{{ produk.nama }}%20dengan%20harga%20Rp%20{{ produk.harga }}" class="beli-btn" target="_blank">Beli</a>
         </div>
         {% endfor %}
     </div>
